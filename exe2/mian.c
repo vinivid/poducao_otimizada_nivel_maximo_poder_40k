@@ -94,8 +94,8 @@ int main(int argc, char** argv) {
         make_random(B, n);
         init_zero(dest, n);
 
-        clock_t start, stop;
-        start = clock();
+        //clock_t start, stop;
+        //start = clock();
         if (argv[1][0] == '0') {
             mult_normal(A, B, dest, n);
         } else if(argv[1][0] == '1') {
@@ -107,9 +107,9 @@ int main(int argc, char** argv) {
         } else {
             printf("Argumento de metodo erroneo.");
         }
-        stop = clock();
+        //stop = clock();
 
-        printf("%f\n", (double)(stop - start) / CLOCKS_PER_SEC);
+        //printf("%f\n", (double)(stop - start) / CLOCKS_PER_SEC);
     } else { //dinamicao
         int* A = malloc(sizeof(int) * (n * n));
         int* B = malloc(sizeof(int) * (n * n));
@@ -117,8 +117,8 @@ int main(int argc, char** argv) {
         make_random(A, n);
         make_random(B, n);
 
-        clock_t start, stop;
-        start = clock();
+        //clock_t start, stop;
+        //start = clock();
         if (argv[1][0] == '0') {
             mult_normal(A, B, dest, n);
         } else if(argv[1][0] == '1') {
@@ -130,8 +130,8 @@ int main(int argc, char** argv) {
         } else {
             printf("Argumento de metodo erroneo.");
         }
-        stop = clock();
+        //stop = clock();
 
-        printf("%f\n", (double)(stop - start) / CLOCKS_PER_SEC);
+        //printf("%f\n", (double)(stop - start) / CLOCKS_PER_SEC);
     }
 }
