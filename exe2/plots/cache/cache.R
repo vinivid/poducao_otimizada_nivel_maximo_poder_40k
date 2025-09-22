@@ -1,0 +1,86 @@
+# Instale caso ainda não tenha
+# install.packages("FrF2")
+library(FrF2)
+
+# ================================
+# 1. Planejamento do experimento
+# ================================
+plan.person = FrF2(
+  nruns = 4,
+  nfactors = 2,
+  replications = 1,
+  repeat.only = FALSE,
+  factor.names = list(
+    Otimizacao = c("Sem otimizacao", "Loop interchange"),
+    Alocacao   = c("Estatico", "Dinamico")
+  ),
+  randomize = FALSE
+)
+
+summary(plan.person)
+
+# ================================
+# 2. Resultados experimentais
+# ================================
+cache_load = c(12986508639.0, 12988036298.6, 12988018608.0, 12987153635.9)
+cache_load_misses = c(606909187.3, 603837969.7, 35926436.9, 35924733.0)
+
+# ================================
+# 3. Criação de designs separados
+# ================================
+# Design para cache_load
+plan.load = add.response(plan.person, response = cache_load)
+names(plan.load)[names(plan.load) == "resp"] <- "cache_load"
+
+# Design para cache_load_misses
+plan.misses = add.response(plan.person, response = cache_load_misses)
+names(plan.misses)[names(plan.misses) == "resp"] <- "cache_load_misses"
+
+# ================================
+# 4. Gráficos
+# ================================
+# Cache Load
+MEPlot(plan.load)
+IAPlot(plan.load)
+
+# Cache Load Misses
+MEPlot(plan.misses)
+IAPlot(plan.misses)
+
+# ================================
+# 5. Modelos lineares
+# ================================
+plan.formula.load = lm(cache_load ~ (Otimizacao * Alocacao), data = plan.load)
+plan.formula.misses = lm(cache_load_misses ~ (Otimizacao * Alocacao), data = plan.misses)
+
+summary(plan.formula.load)
+summary(plan.formula.misses)
+
+# ================================
+# 6. ANOVA
+# ================================
+plan.anova.load = anova(plan.formula.load)
+plan.anova.misses = anova(plan.formula.misses)
+
+# Soma dos quadrados total
+SST.load = sum(plan.anova.load$"Mean Sq"[1:3])
+SST.misses = sum(plan.anova.misses$"Mean Sq"[1:3])
+
+# Influência de cada fator
+InfluenciaA.load  = plan.anova.load$"Mean Sq"[1] / SST.load
+InfluenciaB.load  = plan.anova.load$"Mean Sq"[2] / SST.load
+InfluenciaAB.load = plan.anova.load$"Mean Sq"[3] / SST.load
+
+InfluenciaA.misses  = plan.anova.misses$"Mean Sq"[1] / SST.misses
+InfluenciaB.misses  = plan.anova.misses$"Mean Sq"[2] / SST.misses
+InfluenciaAB.misses = plan.anova.misses$"Mean Sq"[3] / SST.misses
+
+cat("\nInfluência Cache Load:\n")
+cat("Otimizacao:", InfluenciaA.load, "\n")
+cat("Alocacao:", InfluenciaB.load, "\n")
+cat("Interacao:", InfluenciaAB.load, "\n")
+
+cat("\nInfluência Cache Load Misses:\n")
+cat("Otimizacao:", InfluenciaA.misses, "\n")
+cat("Alocacao:", InfluenciaB.misses, "\n")
+cat("Interacao:", InfluenciaAB.misses, "\n")
