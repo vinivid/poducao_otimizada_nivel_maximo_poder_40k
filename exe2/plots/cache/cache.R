@@ -11,7 +11,7 @@ plan.person = FrF2(
   replications = 1,
   repeat.only = FALSE,
   factor.names = list(
-    Otimizacao = c("Sem otimizacao", "Loop interchange"),
+    Otimizacao = c("Sem otimizacao", "Interchange"),
     Alocacao   = c("Estatico", "Dinamico")
   ),
   randomize = FALSE
@@ -21,9 +21,9 @@ summary(plan.person)
 
 # ================================
 # 2. Resultados experimentais
-# ================================
-cache_load = c(12986508639.0, 12988036298.6, 12988018608.0, 12987153635.9)
-cache_load_misses = c(606909187.3, 603837969.7, 35926436.9, 35924733.0)
+# ================================35926436.9
+cache_load = c(12986508639.0, 12988018608.0, 12988036298.6, 12987153635.9)
+cache_load_misses = c(606909187.3, 35926436.9, 603837969.7, 35924733.0)
 
 # ================================
 # 3. Criação de designs separados

@@ -11,7 +11,7 @@ plan.person = FrF2(
   replications = 1,
   repeat.only = FALSE,
   factor.names = list(
-    Otimizacao = c("Sem otimizacao", "Loop interchange"),
+    Otimizacao = c("Sem otimizacao", "Unrolling"),
     Alocacao   = c("Estatico", "Dinamico")
   ),
   randomize = FALSE
@@ -21,9 +21,9 @@ summary(plan.person)
 
 # ================================
 # 2. Resultados experimentais
-# ================================
-branch_instr = c(12986508639.0, 12988036298.6, 12988018608.0, 12987153635.9)
-branch_misses = c(606909187.3, 603837969.7, 35926436.9, 35924733.0)
+# ================================727024.5
+branch_instr = c(574935156.0, 78703666.8, 574934672.0, 78703259.8)
+branch_misses = c(726856.6, 727024.5, 727347.6, 727301.5)
 
 # ================================
 # 3. Criação de designs separados
