@@ -40,16 +40,16 @@ names(plan.misses)[names(plan.misses) == "resp"] <- "cache_miss"
 # 4. Gráficos
 # ================================
 # Cache Load
-par(oma=c(0, 0, 8, 0))
+par(mar=c(0, 0, 8, 0))
 MEPlot(plan.load, main = "Cache Load\nSem vs Loop Interchange")
-par(oma=c(0, 0, 8, 0))
+par(mar=c(0, 0, 8, 0))
 IAPlot(plan.load, main = "Interação Cache Load\nSem vs Loop Interchange")
 
 # Cache Load Misses
-par(oma=c(0, 0, 8, 0))
-MEPlot(plan.load, main = "Cache Load Misses\nSem vs Loop Interchange")
-par(oma=c(0, 0, 8, 0))
-IAPlot(plan.load, main = "Interação Cache Load Misses\nSem vs Loop Interchange")
+par(mar=c(0, 0, 8, 0))
+MEPlot(plan.misses, main = "Cache Load Misses\nSem vs Loop Interchange")
+par(mar=c(0, 0, 8, 0))
+IAPlot(plan.misses, main = "Interação Cache Load Misses\nSem vs Loop Interchange")
 
 # ================================
 # 5. Modelos lineares
@@ -66,7 +66,7 @@ summary(plan.formula.misses)
 plan.anova.load = anova(plan.formula.load)
 plan.anova.misses = anova(plan.formula.misses)
 
-# Soma dos quadrados total
+# Smar dos quadrados total
 SST.load = sum(plan.anova.load$"Mean Sq"[1:3])
 SST.misses = sum(plan.anova.misses$"Mean Sq"[1:3])
 

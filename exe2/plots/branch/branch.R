@@ -40,12 +40,16 @@ names(plan.misses)[names(plan.misses) == "resp"] <- "branch_misses"
 # 4. Gráficos
 # ================================
 # Branch Instructions
-MEPlot(plan.instr)
-IAPlot(plan.instr)
+par(mar=c(0, 0, 8, 0))
+MEPlot(plan.instr, main = "Branch Instructions\nSem vs Loop Unrolling")
+par(mar=c(0, 0, 8, 0))
+IAPlot(plan.instr, main = "Interação Branch Instructions\nSem vs Loop Unrolling")
 
 # Branch Misses
-MEPlot(plan.misses)
-IAPlot(plan.misses)
+par(mar=c(0, 0, 8, 0))
+MEPlot(plan.misses, main = "Branch Misses\nSem vs Loop Unrolling")
+par(mar=c(0, 0, 8, 0))
+IAPlot(plan.misses, main = "Interação Branch Misses\nSem vs Loop Unrolling")
 
 # ================================
 # 5. Modelos lineares
