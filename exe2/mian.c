@@ -82,11 +82,11 @@ void print_mat(int* mat, int n) {
 }
 
 int main(int argc, char** argv) {
-    const int n = 825;
+    const int n = 820;
 
     // estatico
     if (argv[2][0] == '0') {
-        #define N 825
+        #define N 820
         int A[N * N];
         int B[N * N];
         int dest[N * N];
