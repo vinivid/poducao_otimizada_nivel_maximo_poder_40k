@@ -23,7 +23,7 @@ summary(plan.person)
 # 2. Resultados experimentais
 # ================================35926436.9
 cache_load = c(12986508639.0, 12988018608.0, 12988036298.6, 12987153635.9)
-cache_load_misses = c(606909187.3, 35926436.9, 603837969.7, 35924733.0)
+cache_miss = c(606909187.3, 35926436.9, 603837969.7, 35924733.0)
 
 # ================================
 # 3. Criação de designs separados
@@ -32,26 +32,30 @@ cache_load_misses = c(606909187.3, 35926436.9, 603837969.7, 35924733.0)
 plan.load = add.response(plan.person, response = cache_load)
 names(plan.load)[names(plan.load) == "resp"] <- "cache_load"
 
-# Design para cache_load_misses
-plan.misses = add.response(plan.person, response = cache_load_misses)
-names(plan.misses)[names(plan.misses) == "resp"] <- "cache_load_misses"
+# Design para cache_miss
+plan.misses = add.response(plan.person, response = cache_miss)
+names(plan.misses)[names(plan.misses) == "resp"] <- "cache_miss"
 
 # ================================
 # 4. Gráficos
 # ================================
 # Cache Load
-MEPlot(plan.load)
-IAPlot(plan.load)
+par(oma=c(0, 0, 8, 0))
+MEPlot(plan.load, main = "Cache Load\nSem vs Loop Interchange")
+par(oma=c(0, 0, 8, 0))
+IAPlot(plan.load, main = "Interação Cache Load\nSem vs Loop Interchange")
 
 # Cache Load Misses
-MEPlot(plan.misses)
-IAPlot(plan.misses)
+par(oma=c(0, 0, 8, 0))
+MEPlot(plan.load, main = "Cache Load Misses\nSem vs Loop Interchange")
+par(oma=c(0, 0, 8, 0))
+IAPlot(plan.load, main = "Interação Cache Load Misses\nSem vs Loop Interchange")
 
 # ================================
 # 5. Modelos lineares
 # ================================
 plan.formula.load = lm(cache_load ~ (Otimizacao * Alocacao), data = plan.load)
-plan.formula.misses = lm(cache_load_misses ~ (Otimizacao * Alocacao), data = plan.misses)
+plan.formula.misses = lm(cache_miss ~ (Otimizacao * Alocacao), data = plan.misses)
 
 summary(plan.formula.load)
 summary(plan.formula.misses)
