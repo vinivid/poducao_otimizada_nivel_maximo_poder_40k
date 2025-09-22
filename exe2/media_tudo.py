@@ -43,7 +43,7 @@ for file_name in files_branch:
     dados = np.array([int(x) for x in open(f'./branch_instructions/{file_name}')])
     media = np.mean(dados)
     ic = calc_ic(dados)
-    print(f'\t{file_name.removeprefix('branches').removesuffix('.data')}: {round(media, 2)} -> [{round(ic[0], 2)}; {round(ic[1], 2)}]')
+    print(f'\t{file_name.removeprefix('braches').removesuffix('.data')}: {round(media, 2)} -> [{round(ic[0], 2)}; {round(ic[1], 2)}]')
 
 print('Média de branch-misses:')
 
@@ -52,4 +52,4 @@ for file_name in files_cache:
     dados = np.array([int(x) for x in open(f'./branch_misses/{file_name}')])
     media = np.mean(dados)
     ic = calc_ic(dados)
-    print(f'\t{file_name.removeprefix('branches').removesuffix('.data')}: {round(media, 2)} -> [{round(ic[0], 2)}; {round(ic[1], 2)}]')
+    print(f'\t{file_name.removeprefix('braches').removesuffix('.data')}: {round(media, 2)} -> [{round(ic[0], 2)}; {round(ic[1], 2)}]')
