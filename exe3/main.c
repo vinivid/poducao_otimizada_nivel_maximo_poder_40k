@@ -183,7 +183,7 @@ void heap_sort(int* A, int size) {
     }
 }
 
-#define tam_vetor 1000000
+#define tam_vetor 10000000
 
 int* ler_vetor() {
     int* a = (int*)malloc(sizeof(int) * tam_vetor);
