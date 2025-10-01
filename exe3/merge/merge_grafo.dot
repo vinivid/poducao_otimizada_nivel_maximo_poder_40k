@@ -1,0 +1,13 @@
+digraph {
+	tooltip=" "
+	graph [fontname=Arial, nodesep=0.125, ranksep=0.25];
+	node [fontcolor=white, fontname=Arial, height=0, shape=box, style=filled, width=0];
+	edge [fontname=Arial];
+	1 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="main\n100.00%\n(0.00%)"];
+	1 -> 2 [arrowsize="0.99", color="#fd0c00", fontcolor="#fd0c00", fontsize="10.00", label="98.81%\n10×", labeldistance="3.95", penwidth="3.95"];
+	1 -> 4 [arrowsize="0.35", color="#0d1274", fontcolor="#0d1274", fontsize="10.00", label="1.19%\n10×", labeldistance="0.50", penwidth="0.50"];
+	2 [color="#fd0c00", fontcolor="#ffffff", fontsize="10.00", label="merge_sort\n98.81%\n(4.23%)\n10×"];
+	2 -> 3 [arrowsize="0.97", color="#f73601", fontcolor="#f73601", fontsize="10.00", label="94.59%\n100000090×", labeldistance="3.78", penwidth="3.78"];
+	3 [color="#f73601", fontcolor="#ffffff", fontsize="10.00", label="merge\n94.59%\n(94.59%)\n100000090×"];
+	4 [color="#0d1274", fontcolor="#ffffff", fontsize="10.00", label="ler_vetor\n1.19%\n(1.19%)\n10×"];
+}

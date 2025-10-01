@@ -1,0 +1,18 @@
+digraph {
+	tooltip=" "
+	graph [fontname=Arial, nodesep=0.125, ranksep=0.25];
+	node [fontcolor=white, fontname=Arial, height=0, shape=box, style=filled, width=0];
+	edge [fontname=Arial];
+	1 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="main\n99.96%\n(0.00%)"];
+	1 -> 2 [arrowsize="0.99", color="#fd0a00", fontcolor="#fd0a00", fontsize="10.00", label="99.00%\n10×", labeldistance="3.96", penwidth="3.96"];
+	1 -> 6 [arrowsize="0.35", color="#0d1174", fontcolor="#0d1174", fontsize="10.00", label="0.96%\n10×", labeldistance="0.50", penwidth="0.50"];
+	2 [color="#fd0a00", fontcolor="#ffffff", fontsize="10.00", label="heap_sort\n99.00%\n(0.41%)\n10×"];
+	2 -> 3 [arrowsize="0.97", color="#f54202", fontcolor="#f54202", fontsize="10.00", label="93.40%\n99999990×", labeldistance="3.74", penwidth="3.74"];
+	2 -> 4 [arrowsize="0.35", color="#0d2179", fontcolor="#0d2179", fontsize="10.00", label="4.74%\n10×", labeldistance="0.50", penwidth="0.50"];
+	2 -> 5 [arrowsize="0.35", color="#0d0f73", fontcolor="#0d0f73", fontsize="10.00", label="0.45%\n99999990×", labeldistance="0.50", penwidth="0.50"];
+	3 [color="#f54202", fontcolor="#ffffff", fontsize="10.00", label="sieve\n93.40%\n(93.40%)\n99999990×"];
+	4 [color="#0d2179", fontcolor="#ffffff", fontsize="10.00", label="build_max_heap\n4.74%\n(4.17%)\n10×"];
+	4 -> 5 [arrowsize="0.35", color="#0d0f73", fontcolor="#0d0f73", fontsize="10.00", label="0.57%\n128132260×", labeldistance="0.50", penwidth="0.50"];
+	5 [color="#0d1174", fontcolor="#ffffff", fontsize="10.00", label="swap\n1.02%\n(1.02%)\n228132250×"];
+	6 [color="#0d1174", fontcolor="#ffffff", fontsize="10.00", label="ler_vetor\n0.96%\n(0.96%)\n10×"];
+}
